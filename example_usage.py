@@ -1,17 +1,14 @@
 from transcriber import transcribe_audio
-from diarizer import diarize_transcription
-from utils import download_file
+from utils import save_transcription_to_file, download_file
 
-# Ruta del archivo de audio
+# Define la ruta al archivo de audio MP3
 audio_file_path = "path_to_your_audio_file.mp3"
 
-# Transcribir audio
 transcription_result = transcribe_audio(audio_file_path)
 
-# Diarizar transcripción
-final_result = diarize_transcription(transcription_result)
 
-# Opcional: guardar y descargar el resultado final
-# Esto depende de cómo desees manejar la salida
+# Guarda la transcripción en un archivo de texto
+save_transcription_to_file(transcription_result["segments"], "transcription.txt")
 
-print(final_result)  # O cualquier otra forma de visualización que prefieras
+# Descarga o indica al usuario dónde encontrar el archivo de transcripción
+download_file("transcription.txt")
